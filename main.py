@@ -500,7 +500,9 @@ async def process_pwwp(client: Client, m: Message, user_id: int):
                 )
 
                 try:
-                    input4 = await client.listen(chat_id=m.chat.id, filters=filters.user(user_id), timeout=120)
-                    raw_text4 = (input4.text or "").strip()
-                    await input4.delete(True)
-                e
+    input4 = await client.listen(chat_id=m.chat.id, filters=filters.user(user_id), timeout=120)
+    raw_text4 = (input4.text or "").strip()
+    await input4.delete(True)
+except Exception as e:
+    await m.reply_text(f"Error: {e}")
+    return
